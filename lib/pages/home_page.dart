@@ -81,7 +81,7 @@ class ButtonGrid extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => const IconComponents(title: 'Icon')),
+                builder: (context) => IconComponents(title: 'Icon')),
           );
         },
       ),
