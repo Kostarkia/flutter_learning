@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning/pages/components/app_bar_components.dart';
 
 //You can quickly create a Stateless Widget class using stsl
 
@@ -10,10 +11,7 @@ class ScaffoldComponents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(title),
-      ),
+      appBar: buildAppBar(context, title),
       body: const Center(
         child: Text('Scaffold'),
       ),

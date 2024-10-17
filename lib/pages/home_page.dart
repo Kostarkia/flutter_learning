@@ -1,38 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learning/model/button.dart';
+import 'package:flutter_learning/pages/components/app_bar_components.dart';
 import 'package:flutter_learning/pages/components/button_components.dart';
 import 'package:flutter_learning/pages/components/container_sized_box_components.dart';
+import 'package:flutter_learning/pages/components/icon_components.dart';
 import 'package:flutter_learning/pages/components/scaffold_components.dart';
 import 'package:flutter_learning/pages/components/text_view_components.dart';
-import 'package:flutter_learning/theme/theme_change.dart';
-import 'package:provider/provider.dart';
 
 // ignore: use_key_in_widget_constructors
 class HomePage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    final themeChange = Provider.of<ThemeChange>(context);
-    final isDarkMode = themeChange.themeData.brightness == Brightness.dark;
+    const title = 'Flutter Learning';
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("Flutter Learning"),
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {
-              themeChange.toggleTheme(); // Change Theme
-            },
-            icon: Icon(
-              isDarkMode
-                  ? Icons.settings_brightness_outlined
-                  : Icons.settings_brightness_rounded, // Change icon according to theme
-              size: 35,
-            ),
-          ),
-        ],
-      ),
+      appBar: buildAppBar(context, title, centerStatus: false),
       body: Center(
         child: ButtonGrid(),
       ),
@@ -51,7 +33,9 @@ class ButtonGrid extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const TextViewComponents(title: 'Text View Components')),
+            MaterialPageRoute(
+                builder: (context) =>
+                    const TextViewComponents(title: 'Text View Components')),
           );
         },
       ),
@@ -61,7 +45,9 @@ class ButtonGrid extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const ContainerSizedBoxComponents(title: 'Container Sized Box')),
+            MaterialPageRoute(
+                builder: (context) => const ContainerSizedBoxComponents(
+                    title: 'Container Sized Box')),
           );
         },
       ),
@@ -69,9 +55,11 @@ class ButtonGrid extends StatelessWidget {
         text: 'Scaffold',
         backgroundColor: Colors.red,
         onPressed: () {
-         Navigator.push(
+          Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const ScaffoldComponents(title: 'Scaffold')),
+            MaterialPageRoute(
+                builder: (context) =>
+                    const ScaffoldComponents(title: 'Scaffold')),
           );
         },
       ),
@@ -79,12 +67,35 @@ class ButtonGrid extends StatelessWidget {
         text: 'Button',
         backgroundColor: Colors.cyan,
         onPressed: () {
-         Navigator.push(
+          Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const ButtonComponents(title: 'Button')),
+            MaterialPageRoute(
+                builder: (context) => const ButtonComponents(title: 'Button')),
           );
         },
-      )
+      ),
+      ButtonModel(
+        text: 'Icon',
+        backgroundColor: Colors.greenAccent.shade200,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const IconComponents(title: 'Icon')),
+          );
+        },
+      ),
+      // ButtonModel(
+      //   text: 'AppBar',
+      //   backgroundColor: Colors.greenAccent.shade200,
+      //   onPressed: () {
+      //     // Navigator.push(
+      //     //   context,
+      //     //   MaterialPageRoute(
+      //     //       builder: (context) => const AppBarComponents(title: 'AppBar')),
+      //     // );
+      //   },
+      // )
     ];
 
     return GridView.builder(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning/pages/components/app_bar_components.dart';
 
 class ContainerSizedBoxComponents extends StatelessWidget {
   final String title;
@@ -8,10 +9,7 @@ class ContainerSizedBoxComponents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(title),
-        ),
+        appBar: buildAppBar(context, title),
         body: SingleChildScrollView(
           // Scrollview using
           child: Center(

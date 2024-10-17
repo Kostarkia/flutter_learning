@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning/pages/components/app_bar_components.dart';
 
 class ButtonComponents extends StatelessWidget {
   final String title;
@@ -8,10 +9,7 @@ class ButtonComponents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
+      appBar: buildAppBar(context, title),
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
